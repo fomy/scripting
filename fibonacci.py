@@ -3,7 +3,9 @@
 import sys
 
 # "Think Python"
-# -- fast_fibonacci actually is not faster than fibonacci
+
+# In my macbook pro with a 2.4GHz i5 processor,
+# fast_fibonacci is not faster than fibonacci when n < 40.
 
 def fibonacci(n):
     if n==0 or n==1:
