@@ -57,6 +57,7 @@ for file in $(ls $path);do
     ./destor $path/$file >> log
     for s in ${rcs[@]};do
         ./destor -r$n /home/fumin/restore -p"restore-cache lru $s" >> log
+        ./destor -r$n /home/fumin/restore -p"restore-cache opt $s" >> log
     done
     n=$(($n+1))
 done
@@ -68,8 +69,12 @@ split_file(){
     IFS=$'\n' # split 'lines' by '\n'
     lineno=0
     for line in $lines; do
-        r=$((lineno%${#rcs[@]}))
-        echo $line >> restore.log.${rcs[$r]}
+        index=(lineno/2)%${#rcs[@]}
+        if [ lineno%2 -eq 0 ];then
+            echo $line >> restore.log.lru${rcs[$index]}
+        else
+            echo $line >> restore.log.opt${rcs[$index]}
+        fi
         lineno=$(($lineno+1))
     done
 }
