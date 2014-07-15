@@ -70,9 +70,9 @@ split_file(){
     for line in $lines; do
         index=$(( ($lineno/2)%${#rcs[@]} ))
         if [ $(($lineno%2)) -eq 0 ];then
-            echo $line >> restore.log.lru${rcs[$index]}
+            echo $line >> restore.lru${rcs[$index]}.log
         else
-            echo $line >> restore.log.opt${rcs[$index]}
+            echo $line >> restore.opt${rcs[$index]}.log
         fi
         lineno=$(($lineno+1))
     done
