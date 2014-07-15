@@ -68,8 +68,8 @@ split_file(){
     IFS=$'\n' # split 'lines' by '\n'
     lineno=0
     for line in $lines; do
-        index=(lineno/2)%${#rcs[@]}
-        if [ lineno%2 -eq 0 ];then
+        index=$(( ($lineno/2)%${#rcs[@]} ))
+        if [ $(($lineno%2)) -eq 0 ];then
             echo $line >> restore.log.lru${rcs[$index]}
         else
             echo $line >> restore.log.opt${rcs[$index]}
