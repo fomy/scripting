@@ -2,7 +2,6 @@
 
 dataset="kernel"
 
-echo $#, $0, $1
 if [ $# -gt 0 ];then
     echo "dataset <- $1"
     dataset=$1
