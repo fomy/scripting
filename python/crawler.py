@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import os
 import urllib as ul
 import re
 
@@ -23,7 +24,7 @@ for name in names:
     print "downloading %s"%fulpath
     try:
         ul.urlretrieve(fulpath,targetname)
-    except urllib.ContentTooShortError:
+    except ul.ContentTooShortError:
         print "failed %s"%name
         failed.append(name)
         continue
