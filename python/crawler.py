@@ -26,6 +26,7 @@ for name in names:
         ul.urlretrieve(fulpath,targetname)
     except ul.ContentTooShortError:
         print "failed %s"%name
+        os.remove(targetname)
         failed.append(name)
         continue
 
