@@ -12,24 +12,27 @@ match=re.compile(r'(?<=href=["]).*?(?=["])')
 names=re.findall(match, content)
 
 failed=[]
-for name in names:
-    if name=='../':
-        continue
-    targetname=target+name
-    if os.path.exists(targetname):
-        print "skip %s"%name
-        continue
+while True:
+    for name in names:
+        if name=='../':
+            continue
+        targetname=target+name
+        if os.path.exists(targetname):
+            print "skip %s"%name
+            continue
 
-    fulpath=path+name
-    print "downloading %s"%fulpath
-    try:
-        ul.urlretrieve(fulpath,targetname)
-    except ul.ContentTooShortError:
-        print "failed %s"%name
-        os.remove(targetname)
-        failed.append(name)
-        continue
+        fulpath=path+name
+        print "downloading %s"%fulpath
+        try:
+            ul.urlretrieve(fulpath,targetname)
+        except ul.ContentTooShortError:
+            print "failed %s"%name
+            os.remove(targetname)
+            failed.append(name)
+            continue
+    if len(failed)==0:
+        break
+    else:
+        print "all these files failed"
+        print failed 
 
-
-print "all these files failed"
-print failed 
