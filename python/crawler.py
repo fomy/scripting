@@ -33,6 +33,6 @@ while True:
     if len(failed)==0:
         break
     else:
-        print "all these files failed"
+        print "the following files failed:"
         print failed 
 
