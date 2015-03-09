@@ -1,0 +1,13 @@
+[task]
+name=noname
+description=Hey!Run me.
+lockfile=none
+readwrite=write
+fallocate=posix
+size=1G
+blocksize=4k
+scramble_buffers=1
+ioengine=sync
+thread
+sync=1
+direct=1
