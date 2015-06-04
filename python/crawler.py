@@ -31,6 +31,7 @@ while True:
             failed.append(name)
             continue
     if len(failed)==0:
+        print "all files done"
         break
     else:
         print "the following files failed:"
